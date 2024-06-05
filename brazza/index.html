@@ -1421,34 +1421,46 @@ gtag("config", "GT-T56LRPK");
 			</div>
 			</div>
 </footer>
- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var porcentagens = document.querySelectorAll(".elementor-progress-percentage");
+<script>
+// Função para obter a porcentagem salva ou gerar uma nova aleatória para uma barra de progresso específica
+function obterPorcentagemSalva(id) {
+    // Verifica se há uma porcentagem salva no armazenamento local para a barra de progresso com o ID fornecido
+    if (localStorage.getItem('porcentagem_' + id)) {
+        return parseInt(localStorage.getItem('porcentagem_' + id));
+    } else {
+        // Se não houver uma porcentagem salva, gera uma nova aleatória
+        return Math.floor(Math.random() * 101);
+    }
+}
 
-            porcentagens.forEach(function(element) {
-                var porcentagemAtual = parseInt(element.textContent);
+// Função para salvar a porcentagem no armazenamento local para uma barra de progresso específica
+function salvarPorcentagem(id, novaPorcentagem) {
+    localStorage.setItem('porcentagem_' + id, novaPorcentagem);
+}
 
-                var valorArmazenado = localStorage.getItem("porcentagem_" + element.id);
-                if (valorArmazenado) {
-                    porcentagemAtual = parseInt(valorArmazenado);
-                    element.textContent = porcentagemAtual + "%";
-                }
+function atualizarProgressBar(id) {
+    // Obtém a porcentagem salva ou gera uma nova para a barra de progresso com o ID fornecido
+    var porcentagemAtual = obterPorcentagemSalva(id);
+    
+    // Atualiza o texto da porcentagem
+    var progressoTexto = document.querySelector('#' + id + ' .elementor-progress-percentage');
+    progressoTexto.textContent = porcentagemAtual + '%';
 
-                setInterval(function() {
-                    var novoValor = porcentagemAtual + Math.floor(Math.random() * 31) - 15; 
-                    if (novoValor < 15) {
-                        novoValor = 15;
-                    } else if (novoValor > 100) {
-                        novoValor = 100;
-                    }
-                    porcentagemAtual = novoValor;
-                    element.textContent = porcentagemAtual + "%";
+    // Atualiza a largura da barra de progresso
+    var barraProgresso = document.getElementById(id);
+    var larguraBarra = porcentagemAtual + '%';
+    barraProgresso.style.width = larguraBarra;
 
-                    localStorage.setItem("porcentagem_" + element.id, porcentagemAtual);
-                }, 300000);
-            });
-        });
-    </script>
+    // Salva a nova porcentagem
+    salvarPorcentagem(id, porcentagemAtual);
+}
+
+// Chama a função de atualização inicialmente e a cada 5 minutos para cada barra de progresso
+atualizarProgressBar('progressbar1');
+atualizarProgressBar('progressbar2');
+setInterval(function() { atualizarProgressBar('progressbar1'); }, 300000); // 5 minutos = 300000 milissegundos
+setInterval(function() { atualizarProgressBar('progressbar2'); }, 300000); // 5 minutos = 300000 milissegundos
+</script>
 <noscript><img height="1" width="1" style="display: none;" src="../../www.facebook.com/tr4055?id=1001740124470607&amp;ev=PageView&amp;noscript=1&amp;cd%5Bpage_title%5D=brazza&amp;cd%5Bpost_type%5D=page&amp;cd%5Bpost_id%5D=2892&amp;cd%5Bplugin%5D=PixelYourSite&amp;cd%5Buser_role%5D=guest&amp;cd%5Bevent_url%5D=magadoslots.online%2Fbrazza%2F" alt=""></noscript>
 <script id="superpwa-register-sw-js-extra">
 var superpwa_sw = {"url":"\/superpwa-sw.js?2.2.19","disable_addtohome":"0","enableOnDesktop":""};
