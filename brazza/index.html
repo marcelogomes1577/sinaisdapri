@@ -1421,7 +1421,25 @@ gtag("config", "GT-T56LRPK");
 			</div>
 			</div>
 </footer>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var porcentagens = document.querySelectorAll(".elementor-progress-percentage");
+    
+    porcentagens.forEach(function(element) {
+        var porcentagemAtual = parseInt(element.textContent);
+        setInterval(function() {
+            var novoValor = porcentagemAtual + Math.floor(Math.random() * 31) - 15; // Gera um novo valor aleatório entre -15 e 15
+            if (novoValor < 15) {
+                novoValor = 15; // Limita o valor mínimo a 15%
+            } else if (novoValor > 100) {
+                novoValor = 100; // Limita o valor máximo a 100%
+            }
+            porcentagemAtual = novoValor; // Atualiza o valor atual
+            element.textContent = porcentagemAtual + "%"; // Atualiza o texto da porcentagem
+        }, 1000); // Altera as porcentagens a cada 1 segundo
+    });
+});
+</script>
 <noscript><img height="1" width="1" style="display: none;" src="../../www.facebook.com/tr4055?id=1001740124470607&amp;ev=PageView&amp;noscript=1&amp;cd%5Bpage_title%5D=brazza&amp;cd%5Bpost_type%5D=page&amp;cd%5Bpost_id%5D=2892&amp;cd%5Bplugin%5D=PixelYourSite&amp;cd%5Buser_role%5D=guest&amp;cd%5Bevent_url%5D=magadoslots.online%2Fbrazza%2F" alt=""></noscript>
 <script id="superpwa-register-sw-js-extra">
 var superpwa_sw = {"url":"\/superpwa-sw.js?2.2.19","disable_addtohome":"0","enableOnDesktop":""};
